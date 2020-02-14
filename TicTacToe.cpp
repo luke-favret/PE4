@@ -27,21 +27,21 @@ public:
     bool PlaceMarker(int player); 
 private: 
     SquareType board[3][3]; 
-    int rows; 
-    int columns; 
-    int move; 
-    int player; //1 = X : 2 = 0 
+    int rows_; 
+    int columns_; 
+    int move_; 
+    int player_; //1 = X : 2 = 0 
 
 }; 
 Board::Board()
 {
-    int rows=3; 
-    int columns=3; 
-    int move=0; 
-    char player=' '; 
-    for(int i = 0; i < rows; i ++){ //Set all values in board to Empty
+    int rows_=3; 
+    int columns_=3; 
+    int move_=0; 
+    char player_=' '; 
+    for(int i = 0; i < rows_; i ++){ //Set all values in board to Empty
         cout<<"in for 1"; 
-        for(int j = 0; j < columns; j++){
+        for(int j = 0; j < columns_; j++){
             board[i][j] = SquareType::Empty;
             cout<<"in for"; 
         }
@@ -85,22 +85,22 @@ void Board::GetPlayerChoice() //prompts user to determine wheater
         if (input==1)
         {
             cout<<"in if"<<endl;
-            player=1; 
+            player_=1; 
         }
         if (input==2)
         {
-            player=2; 
+            player_=2; 
         }
-        cout<<"player is "<<player<<endl;
+        cout<<"player is "<<player_<<endl;
         DisplayBoard();
         cout<<"Please make a valid sqare selection, input corresponding number value"<<endl;
         displayNumBoard(); 
         cin>>playerMove; 
-        move=playerMove; 
+        move_=playerMove; 
         bool TF; 
-        TF=PlaceMarker(player); 
-        cout<<"move is "<<move<<endl;
-        cout<<"player is "<<player<<endl;
+        TF=PlaceMarker(pyer_); 
+        cout<<"move is "<<move_<<endl;
+        cout<<"player is "<<pyer_<<endl;
         if (TF==true)
         {
             cout<<"Move sucessfully made"<<endl;
@@ -118,7 +118,7 @@ void Board::GetPlayerChoice() //prompts user to determine wheater
 bool Board::PlaceMarker (int player){
     cout<<"in PM"<<endl;
     //DisplayBoard(); 
-    if (move==1) {
+    if (move_==1) {
         if (player==1) {
         board[0][0]=SquareType::X; 
         return true; }
@@ -127,7 +127,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-     if (move==2) {
+     if (move_==2) {
         if (player==1) {
         board[0][1]=SquareType::X; 
         return true; }
@@ -136,7 +136,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-     if (move==3) {
+     if (move_==3) {
         if (player==1) {
 
         board[0][2]=SquareType::X; 
@@ -145,7 +145,7 @@ bool Board::PlaceMarker (int player){
             board[0][2]=SquareType::O; 
             return true;
         }
-    if (move==4) {
+    if (move_==4) {
         if (player==1) {
         board[1][0]=SquareType::X; 
         return true; }
@@ -154,7 +154,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==5) {
+    if (move_==5) {
         if (player==1) {
         board[1][1]=SquareType::X; 
         return true; }
@@ -163,7 +163,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==6) {
+    if (move_==6) {
         if (player==1) {
         board[1][2]=SquareType::X; 
         return true; }
@@ -172,7 +172,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==7) {
+    if (move_==7) {
         if (player==1) {
         board[2][0]=SquareType::X; 
         return true; }
@@ -181,7 +181,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==8) {
+    if (move_==8) {
         if (player==1) {
         board[2][1]=SquareType::X; 
         return true; }
@@ -190,7 +190,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==9) {
+    if (move_==9) {
         if (player==1) {
         board[2][2]=SquareType::X; 
         return true; }
