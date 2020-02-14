@@ -39,6 +39,12 @@ SquareType* CreateBoard(int rows, int columns){ //arrays passed by ref so no nee
     //return board[3][3];
 }
 
+//sets spot to entered SquareType
+void PlaceMarker(int row, int col, SquareType move){
+    SquareType board[3][3];
+    board[row][col] = move;
+}
+
 
 int main(){
     int rows = 3;
