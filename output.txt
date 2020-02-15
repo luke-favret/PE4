@@ -1,0 +1,74 @@
+   |   |   |
+   |   |   |
+   |   |   |
+Hello, welcome to TicTacToe
+Please enter if player X or 0, enter 1 for X and 2 for O
+1
+in if
+player is 1
+Please make a valid sqare selection, input corresponding number value
+ 1 | 2 | 3 |
+ 4 | 5 | 6 |
+ 7 | 8 | 9 |
+7
+   |   |   |
+   |   |   |
+ X |   |   |
+move is 7
+player is 1
+Move sucessfully made
+Please enter if player X or 0, enter 1 for X and 2 for O
+2
+player is 2
+Please make a valid sqare selection, input corresponding number value
+ 1 | 2 | 3 |
+ 4 | 5 | 6 |
+ 7 | 8 | 9 |
+3
+   |   | O |
+   |   |   |
+ X |   |   |
+move is 3
+player is 2
+Move sucessfully made
+Please enter if player X or 0, enter 1 for X and 2 for O
+1
+in if
+player is 1
+Please make a valid sqare selection, input corresponding number value
+ 1 | 2 | 3 |
+ 4 | 5 | 6 |
+ 7 | 8 | 9 |
+8
+   |   | O |
+   |   |   |
+ X | X |   |
+move is 8
+player is 1
+Move sucessfully made
+Please enter if player X or 0, enter 1 for X and 2 for O
+2
+player is 2
+Please make a valid sqare selection, input corresponding number value
+ 1 | 2 | 3 |
+ 4 | 5 | 6 |
+ 7 | 8 | 9 |
+5
+   |   | O |
+   | O |   |
+ X | X |   |
+move is 5
+player is 2
+Move sucessfully made
+Please enter if player X or 0, enter 1 for X and 2 for O
+1
+in if
+player is 1
+Please make a valid sqare selection, input corresponding number value
+ 1 | 2 | 3 |
+ 4 | 5 | 6 |
+ 7 | 8 | 9 |
+9
+   |   | O |
+   | O |   |
+ X | X | X |
