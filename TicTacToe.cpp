@@ -4,10 +4,11 @@ using namespace std;
 /* Luke Favret and Daisy Flotron
 This program is a simple game of tic tac toe */
 
+//Tic Tac Toe (Symbolic) board is made of an array of these classes
+enum class SquareType { X, O, Empty}; 
 
-enum class SquareType { X, O, Empty}; //used to set values of the tictactoe board 
-
-void displayNumBoard() //displays the board with number values in positions to make move selection easier
+//displays the board with number values in positions to make move selection easier
+void displayNumBoard() 
 {
     int arr[3][3]={1,2,3,4,5,6,7,8,9}; 
     for (int i=0; i<3;  i++) {
@@ -17,7 +18,8 @@ void displayNumBoard() //displays the board with number values in positions to m
         cout<<endl;
     }
 }
-//used to magage game playing and the board 
+
+//used to manage game playing and the board 
 class Board {
 public: 
     Board(); 
@@ -26,23 +28,23 @@ public:
     void GetPlayerChoice(); 
     bool PlaceMarker(int player); 
 private: 
-    SquareType board[3][3]; 
-    int rows; 
-    int columns; 
-    int move; 
-    int player; //1 = X : 2 = 0 
+    SquareType board_[3][3]; 
+    int rows_; 
+    int columns_; 
+    int move_; 
+    int player_; //1 = X : 2 = 0 
 
 }; 
 Board::Board() //constructor, creates board using nested for, sets board to empty 
 {
-    int rows=3; 
-    int columns=3; 
-    int move=0; 
-    char player=' '; 
-    for(int i = 0; i < rows; i ++){ //Set all values in board to Empty
+    rows_=3; 
+    columns_=3; 
+    move_=0; 
+    player_=' '; 
+    for(int i = 0; i < rows_; i ++){ //Set all values in board to Empty
         cout<<"in for 1"; 
-        for(int j = 0; j < columns; j++){
-            board[i][j] = SquareType::Empty;
+        for(int j = 0; j < columns_; j++){
+            board_[i][j] = SquareType::Empty;
             cout<<"in for"; 
         }
     }
@@ -54,12 +56,14 @@ void Board::CreateBoard(){ //arrays passed by ref so no need to return it
                             //had to move for loops into constructor 
     //return board[3][3];
 }
-void Board::DisplayBoard() //arrays passed by ref so correct vals are printed
+
+/*Prints the board in symbolic form*/
+void Board::DisplayBoard() 
 {
     SquareType val; 
     for (int i=0; i<3; i++){
         for (int  j=0;  j<3; j++) {
-            val=board[i][j]; 
+            val=board_[i][j]; 
             if (val==SquareType::Empty) {
                 cout<<"   |"; 
             }
@@ -75,33 +79,35 @@ void Board::DisplayBoard() //arrays passed by ref so correct vals are printed
     }
 }
 
-void Board::GetPlayerChoice() //prompts user to determine wheater 
+/*Prompts user to state which player they are, then displays a number board 
+corresponding to spots on the symbolic board, then prompts suer to pick spot to move*/
+void Board::GetPlayerChoice() 
 {
     char ans; 
     int playerMove; 
     int input; //holds users imput is x or 0
-        cout<<"Please enter if player X or 0, enter 1 for X and 2 for O"<<endl; 
+        cout<<"Please enter 1 for X and 2 for O"<<endl; 
         cin>>input; 
         if (input==1)
         {
             cout<<"in if"<<endl;
-            player=1; 
+            player_=1; 
         }
         if (input==2)
         {
-            player=2; 
+            player_=2; 
         }
-        cout<<"player is "<<player<<endl;
+        cout<<"player is "<<player_<<endl;
         
         cout<<"Please make a valid sqare selection, input corresponding number value"<<endl;
         displayNumBoard(); 
         cin>>playerMove; 
-        move=playerMove; 
+        move_=playerMove; 
         bool TF; 
-        TF=PlaceMarker(player); 
+        TF=PlaceMarker(player_); 
         DisplayBoard();
-        cout<<"move is "<<move<<endl;
-        cout<<"player is "<<player<<endl;
+        cout<<"move is "<<move_<<endl;
+        cout<<"player is "<<player_<<endl;
         if (TF==true)
         {
             cout<<"Move sucessfully made"<<endl;
@@ -120,85 +126,85 @@ bool Board::PlaceMarker (int player){
    // cout<<"in PM"<<endl; test 
     //DisplayBoard(); 
     // switch statement to put approperiate X or O into correct position inputted by user, returns true when set
-    switch (move) {
+    switch (move_) {
     case 1: {
         if (player==1) {
-        board[0][0]=SquareType::X; 
+        board_[0][0]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[0][0]=SquareType::O;
+            board_[0][0]=SquareType::O;
             return true;
         }
     }
      case 2: {
         if (player==1) {
-        board[0][1]=SquareType::X; 
+        board_[0][1]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[0][1]=SquareType::O; 
+            board_[0][1]=SquareType::O; 
             return true;
         }
     }
      case 3:  {
         if (player==1) {
 
-        board[0][2]=SquareType::X; 
+        board_[0][2]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[0][2]=SquareType::O; 
+            board_[0][2]=SquareType::O; 
             return true;
         }
     case 4:   {
         if (player==1) {
-        board[1][0]=SquareType::X; 
+        board_[1][0]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[1][0]=SquareType::O; 
+            board_[1][0]=SquareType::O; 
             return true;
         }
     }
     case 5: {
         if (player==1) {
-        board[1][1]=SquareType::X; 
+        board_[1][1]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[1][1]=SquareType::O; 
+            board_[1][1]=SquareType::O; 
             return true;
         }
     }
     case 6: {
         if (player==1) {
-        board[1][2]=SquareType::X; 
+        board_[1][2]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[1][2]=SquareType::O; 
+            board_[1][2]=SquareType::O; 
             return true;
         }
     }
     case 7:  {
         if (player==1) {
-        board[2][0]=SquareType::X; 
+        board_[2][0]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[2][0]=SquareType::O; 
+            board_[2][0]=SquareType::O; 
             return true;
         }
     }
     case 8: {
         if (player==1) {
-        board[2][1]=SquareType::X; 
+        board_[2][1]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[2][1]=SquareType::O; 
+            board_[2][1]=SquareType::O; 
             return true;
         }
     }
     case 9: {
         if (player==1) {
-        board[2][2]=SquareType::X; 
+        board_[2][2]=SquareType::X; 
         return true; }
         if (player==2) {
-            board[2][2]=SquareType::O; 
+            board_[2][2]=SquareType::O; 
             return true;
         }
     }
