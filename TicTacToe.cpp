@@ -5,7 +5,7 @@ using namespace std;
 This program is a simple game of tic tac toe */
 
 
-enum class SquareType { X, O, Empty};
+enum class SquareType { X, O, Empty}; //used to set values of the tictactoe board 
 
 void displayNumBoard() //displays the board with number values in positions to make move selection easier
 {
@@ -17,7 +17,7 @@ void displayNumBoard() //displays the board with number values in positions to m
         cout<<endl;
     }
 }
-
+//used to magage game playing and the board 
 class Board {
 public: 
     Board(); 
@@ -33,7 +33,7 @@ private:
     int player; //1 = X : 2 = 0 
 
 }; 
-Board::Board()
+Board::Board() //constructor, creates board using nested for, sets board to empty 
 {
     int rows=3; 
     int columns=3; 
@@ -92,13 +92,14 @@ void Board::GetPlayerChoice() //prompts user to determine wheater
             player=2; 
         }
         cout<<"player is "<<player<<endl;
-        DisplayBoard();
+        
         cout<<"Please make a valid sqare selection, input corresponding number value"<<endl;
         displayNumBoard(); 
         cin>>playerMove; 
         move=playerMove; 
         bool TF; 
         TF=PlaceMarker(player); 
+        DisplayBoard();
         cout<<"move is "<<move<<endl;
         cout<<"player is "<<player<<endl;
         if (TF==true)
@@ -109,16 +110,18 @@ void Board::GetPlayerChoice() //prompts user to determine wheater
         {
             cout<<"Error, move not made"<<endl;
         }
-        DisplayBoard(); 
+        //DisplayBoard(); 
         return; 
 
 }
 
-
+//moves and X or O on the board in the diesired postion of user from getplayerchoice function
 bool Board::PlaceMarker (int player){
-    cout<<"in PM"<<endl;
+   // cout<<"in PM"<<endl; test 
     //DisplayBoard(); 
-    if (move==1) {
+    // switch statement to put approperiate X or O into correct position inputted by user, returns true when set
+    switch (move) {
+    case 1: {
         if (player==1) {
         board[0][0]=SquareType::X; 
         return true; }
@@ -127,7 +130,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-     if (move==2) {
+     case 2: {
         if (player==1) {
         board[0][1]=SquareType::X; 
         return true; }
@@ -136,7 +139,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-     if (move==3) {
+     case 3:  {
         if (player==1) {
 
         board[0][2]=SquareType::X; 
@@ -145,7 +148,7 @@ bool Board::PlaceMarker (int player){
             board[0][2]=SquareType::O; 
             return true;
         }
-    if (move==4) {
+    case 4:   {
         if (player==1) {
         board[1][0]=SquareType::X; 
         return true; }
@@ -154,7 +157,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==5) {
+    case 5: {
         if (player==1) {
         board[1][1]=SquareType::X; 
         return true; }
@@ -163,7 +166,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==6) {
+    case 6: {
         if (player==1) {
         board[1][2]=SquareType::X; 
         return true; }
@@ -172,7 +175,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==7) {
+    case 7:  {
         if (player==1) {
         board[2][0]=SquareType::X; 
         return true; }
@@ -181,7 +184,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==8) {
+    case 8: {
         if (player==1) {
         board[2][1]=SquareType::X; 
         return true; }
@@ -190,7 +193,7 @@ bool Board::PlaceMarker (int player){
             return true;
         }
     }
-    if (move==9) {
+    case 9: {
         if (player==1) {
         board[2][2]=SquareType::X; 
         return true; }
@@ -201,17 +204,26 @@ bool Board::PlaceMarker (int player){
     }
 
     }
-    return false; 
+}
+    return false; //returns false if playee input no (0-9)
     
 }
 int main() {
 
     Board game; 
-    game.CreateBoard();
-    game.DisplayBoard(); 
+    game.DisplayBoard(); //displays blank board 
     cout<<"Hello, welcome to TicTacToe"<<endl;
     game.GetPlayerChoice(); 
+    //small for to handle turn taking for game calling class functions
+
+    game.GetPlayerChoice(); //hard coded to go back and fourth until one player can win 
+    game.GetPlayerChoice(); 
+    game.GetPlayerChoice(); 
+    game.GetPlayerChoice(); 
+    game.GetPlayerChoice(); 
+    
      
     
     //PlaceMarker(move, person); 
+
 }
